@@ -32,9 +32,10 @@ module.exports = {
 								// 'env'로 지정하여 ES2017를 ES5로 변환
 								//  modules: false 로 하지않으면 import문이 Babel에 의해서 CommonJS로 변환됨
                                 'es2015',
-								// React의 JSX 해석
-								'react',
-								
+								//spread 문법을 쓰기위한 설정
+                                'stage-0',
+                                // React의 JSX 해석
+                                'react',                                								
 							],
 							cacheDirectory: true,
 							plugins : ['react-hot-loader/babel'],
