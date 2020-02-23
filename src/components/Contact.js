@@ -75,6 +75,24 @@ export default class Contact extends React.Component {
         });
     }
 
+    componentWillMount() {
+        const contactData = localStorage.contactData;
+
+        if(contactData) {
+            this.setState({
+                contactData :JSON.parse(contactData)
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        //이렇게 하면 서버를 다시 시작해도 내 로컬에 저장되어있는 데이터로 보여주게 된다.
+        //되돌리고 싶으면 localstorage.clear(); 를 브라우저의 개발자 콘솔에서 해주면 된다.
+        if(JSON.stringify(prevState.contactData) != JSON.stringify(this.state.contactData)){
+            localStorage.contactData = JSON.stringify(this.state.contactData);
+        }
+    }
+
 
     render(){
         const mapToComponent = (data) => {
